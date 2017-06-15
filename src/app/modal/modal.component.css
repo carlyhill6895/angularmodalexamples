@@ -1,0 +1,16 @@
+.modal-container {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  position: fixed;
+  z-index: 4;
+}
+
+.modal-content {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  background-color: lightcoral;
+}

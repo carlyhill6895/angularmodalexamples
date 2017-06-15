@@ -1,0 +1,22 @@
+<h1>
+  Modal different implementations example:
+</h1>
+
+<h2>First modal: </h2>
+<button (click)="show = true">show first implementation</button>
+
+<div class="modal-container" *ngIf="show">
+  <div class="modal-content">
+    <h3>Delete</h3>
+    <p>Are you sure you want to delete this?</p>
+    <button (click)="show = false">Cancel</button><button (click)="delete()">I am sure</button>
+  </div>
+</div>
+
+<app-delete-modal #deleteModal></app-delete-modal>
+<h2>Second modal: </h2>
+<button (click)="deleteModal.showModal()">show second implementation</button>
+
+<app-delete-confirm-modal #deleteConfirmModal></app-delete-confirm-modal>
+<h2>Third modal: </h2>
+<button (click)="deleteConfirmModal.show()">show third implementation</button>

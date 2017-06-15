@@ -1,0 +1,25 @@
+<h1>Products</h1>
+
+<button>Add a new Product</button>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Delete product</td>
+    <td>Change Product</td>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{product.name}}</td>
+    <td>{{product.price | currency:'EUR'}}</td>
+    <td><button (click)="requestDelete(product)">Delete</button></td>
+    <td><button>Change</button></td>
+  </tr>
+</table>
+
+<div class="modal-container" *ngIf="showDeleteModal">
+  <div class="modal-content">
+    <h3>Are you sure you want to delete {{selectedProduct.name}}?</h3>
+    <button (click)="deleteProduct()">Delete</button><button (click)="showDeleteModal = false">Cancel</button>
+  </div>
+</div>
