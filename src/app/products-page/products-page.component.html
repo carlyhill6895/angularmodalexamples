@@ -1,19 +1,21 @@
 <h1>Products</h1>
 
-<button>Add a new Product</button>
+<button (click)="showAddProductModal = true">Add a new Product</button>
 
 <table>
   <tr>
     <td>Name</td>
     <td>Price</td>
+    <td>Stock</td>
     <td>Delete product</td>
     <td>Change Product</td>
   </tr>
   <tr *ngFor="let product of products">
     <td>{{product.name}}</td>
     <td>{{product.price | currency:'EUR'}}</td>
+    <td>{{product.stock}}</td>
     <td><button (click)="requestDelete(product)">Delete</button></td>
-    <td><button>Change</button></td>
+    <td><button (click)="requestChange(product)">Change</button></td>
   </tr>
 </table>
 
@@ -21,5 +23,31 @@
   <div class="modal-content">
     <h3>Are you sure you want to delete {{selectedProduct.name}}?</h3>
     <button (click)="deleteProduct()">Delete</button><button (click)="showDeleteModal = false">Cancel</button>
+  </div>
+</div>
+
+<div class="modal-container" *ngIf="showAddProductModal">
+  <div class="modal-content">
+    <h3>Add a new product</h3>
+    <form #addProductForm="ngForm">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" [(ngModel)]="newProduct.name">
+      <label for="price">Price: </label>
+      <input type="number" name="price" id="price" [(ngModel)]="newProduct.price">
+    </form>
+    <button (click)="addProduct()">Add</button><button (click)="showAddProductModal = false">Cancel</button>
+  </div>
+</div>
+
+<div class="modal-container" *ngIf="showChangeModal">
+  <div class="modal-content">
+    <h3>Change product: {{selectedProduct.name}}</h3>
+    <form #changeProductForm = "ngForm">
+      <label for="new-name">Name:</label>
+      <input type="text" name="name" id="new-name" [(ngModel)]="selectedProduct.name">
+      <label for="new-price">Price: </label>
+      <input type="number" name="price" id="new-price" [(ngModel)]="selectedProduct.price">
+    </form>
+    <button (click)="showChangeModal = false">Change</button><button (click)="cancelChange()">Cancel</button>
   </div>
 </div>

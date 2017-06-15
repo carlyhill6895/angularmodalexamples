@@ -2,7 +2,8 @@
   top: 0;
   bottom: 0;
   left: 0;
-  height: 0;
+  height: 100%;
+  width: 100%;
   position: fixed;
   z-index: 4;
 }
@@ -12,7 +13,9 @@
   margin: auto;
   height: 500px;
   width: 500px;
-  background-color: lightblue;
+  background-color: lightcyan;
+  text-align: center;
+  align-content: center;
 }
 
 td {

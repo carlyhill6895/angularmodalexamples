@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-interface Product {
-  name: string;
-  price: number;
+class Product {
+  constructor(public name: string, public price: number, public stock: number) {}
 }
 
 @Component({
@@ -13,12 +12,17 @@ interface Product {
 export class ProductsPageComponent implements OnInit {
 
   selectedProduct: Product;
+  newProduct: Product;
+  productBeforeChange: Product;
   showDeleteModal: boolean;
+  showAddProductModal: boolean;
+  showChangeModal: boolean;
   products: Product[];
   constructor() { }
 
   ngOnInit() {
-    this.products = [{name: 'eggs', price: 1.25}, {name: 'milk', price: 0.9}];
+    this.products = [{name: 'eggs', price: 1.25, stock: 5}, {name: 'milk', price: 0.9, stock: 10}];
+    this.newProduct = new Product(undefined, undefined, undefined);
   }
 
   requestDelete(product: Product) {
@@ -26,7 +30,27 @@ export class ProductsPageComponent implements OnInit {
     this.showDeleteModal = true;
   }
 
+  requestChange(product: Product) {
+    this.selectedProduct = product;
+    this.productBeforeChange = new Product(product.name, product.price, product.stock);
+    this.showChangeModal = true;
+  }
+
   deleteProduct() {
     this.products = this.products.filter((product) => product !== this.selectedProduct);
+    this.showDeleteModal = false;
+  }
+
+  addProduct() {
+    this.products.push(this.newProduct);
+    this.newProduct = new Product(undefined, undefined, undefined);
+    this.showAddProductModal = false;
+  }
+
+  cancelChange() {
+    const index = this.products.indexOf(this.selectedProduct);
+    console.log('put back to previous state: ', this.productBeforeChange);
+    this.products[index] = this.productBeforeChange;
+    this.showChangeModal = false;
   }
 }
