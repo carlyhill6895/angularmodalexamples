@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-class Product {
-  constructor(public name: string, public price: number, public stock: number) {}
-}
+import {Product} from '../../domain/product';
 
 @Component({
   selector: 'app-products-page',

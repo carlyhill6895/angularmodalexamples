@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { DeleteModalComponent } from './delete-modal/delete-modal.component';
-import { ModalComponent } from './modal/modal.component';
-import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
-import { DeleteConfirmModalComponent } from './delete-confirm-modal/delete-confirm-modal.component';
-import { ProductsPageComponent } from './products-page/products-page.component';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { DeleteConfirmModalComponent } from './components/delete-confirm-modal/delete-confirm-modal.component';
+import { ProductsPageComponent } from './components/products-page/products-page.component';
 import {RouterModule} from '@angular/router';
-import { ModalExampleComponent } from './modal-example/modal-example.component';
+import { ModalExampleComponent } from './components/modal-example/modal-example.component';
+import { ShopComponent } from './components/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
     ConfirmModalComponent,
     DeleteConfirmModalComponent,
     ProductsPageComponent,
-    ModalExampleComponent
+    ModalExampleComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,10 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
       {
         path: 'modals',
         component: ModalExampleComponent
+      },
+      {
+        path: '',
+        component: ShopComponent
       }
     ])
   ],

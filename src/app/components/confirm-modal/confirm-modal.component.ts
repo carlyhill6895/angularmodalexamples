@@ -20,7 +20,6 @@ export class ConfirmModalComponent {
   }
 
   confirmAction() {
-    console.log('confirm action called');
     this.confirm.emit();
     this.modal.closeModal();
   }
