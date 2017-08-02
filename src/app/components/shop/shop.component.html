@@ -1,0 +1,36 @@
+<h1>Shop</h1>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Stock</td>
+    <td>Add to cart</td>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{product.name}}</td>
+    <td>{{product.price | currency:'EUR'}}</td>
+    <td>{{product.stock}}</td>
+    <td><button (click)="requestAdd(product)">Add to cart</button></td>
+  </tr>
+</table>
+
+<h2>Shopping cart:</h2>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Amount</td>
+    <td>total price</td>
+  </tr>
+  <tr *ngFor="let order of cart">
+    <td>{{order.productName}}</td>
+    <td>{{order.amount}}</td>
+    <td>{{order.totalPrice | currency:'EUR'}}</td>
+  </tr>
+</table>
+
+<button (click)="cart = []">Delete all items</button>
+
+<h2>Totale prijs: {{getTotalPrice() | currency:'EUR'}}</h2>
+
+<app-confirm-modal #addProductModal (confirm)="addProductToCart()" confirmReason=""></app-confirm-modal>
