@@ -11,7 +11,7 @@ import {ConfirmModalComponent} from '../confirm-modal/confirm-modal.component';
 export class ShopComponent implements OnInit {
 
   products: Product[];
-  cart: Order[];
+  shoppingCart: Order[];
   selectedProduct: Product;
   @ViewChild(ConfirmModalComponent) addProductModal: ConfirmModalComponent;
 
@@ -19,10 +19,10 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     this.products = [{name: 'eggs', price: 1.25, stock: 5}, {name: 'milk', price: 0.9, stock: 10}];
-    this.cart = [];
+    this.shoppingCart = [];
   }
 
-  requestAddProduct(product: Product) {
+  requestAddProduct(product: Product, amount: number): void {
     this.selectedProduct = product;
     this.addProductModal.confirmReason = `add ${this.selectedProduct.name} to your cart?`;
     this.addProductModal.showModal();
@@ -32,20 +32,20 @@ export class ShopComponent implements OnInit {
     // update stock
     const order = new Order(this.selectedProduct.name, 1, this.selectedProduct.price);
     this.selectedProduct.stock --;
-    const previousOrder = this.cart.find(cartOrder => order.productName === cartOrder.productName);
+    const previousOrder = this.shoppingCart.find(cartOrder => order.productName === cartOrder.productName);
 
-    // update cart
+    // update shoppingCart
     if (previousOrder) {
       previousOrder.amount ++;
       previousOrder.totalPrice += order.totalPrice;
     } else {
-      this.cart.push(order);
+      this.shoppingCart.push(order);
     }
   }
 
   getTotalPrice(): number {
     let price = 0;
-    this.cart.forEach(order => price += order.totalPrice);
+    this.shoppingCart.forEach(order => price += order.totalPrice);
     return price;
   }
 }

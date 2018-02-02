@@ -11,7 +11,7 @@
     <td>{{product.name}}</td>
     <td>{{product.price | currency:'EUR'}}</td>
     <td>{{product.stock}}</td>
-    <td><button (click)="requestAddProduct(product)">Add to cart</button></td>
+    <td><button (click)="requestAddProduct(product, 1)">Add to cart</button></td>
   </tr>
 </table>
 
@@ -22,14 +22,14 @@
     <td>Amount</td>
     <td>total price</td>
   </tr>
-  <tr *ngFor="let order of cart">
+  <tr *ngFor="let order of shoppingCart">
     <td>{{order.productName}}</td>
     <td>{{order.amount}}</td>
     <td>{{order.totalPrice | currency:'EUR'}}</td>
   </tr>
 </table>
 
-<button (click)="cart = []">Delete all items</button>
+<button (click)="shoppingCart = []">Delete all items</button>
 
 <h2>Totale prijs: {{getTotalPrice() | currency:'EUR'}}</h2>
 
