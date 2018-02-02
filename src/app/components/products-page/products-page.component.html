@@ -19,12 +19,8 @@
   </tr>
 </table>
 
-<div class="modal-container" *ngIf="showDeleteModal">
-  <div class="modal-content">
-    <h3>Are you sure you want to delete {{selectedProduct.name}}?</h3>
-    <button (click)="deleteProduct()">Delete</button><button (click)="showDeleteModal = false">Cancel</button>
-  </div>
-</div>
+<app-confirm-modal #deleteProductModal (confirm)="deleteProduct()" confirmReason="delete {{selectedProduct.name}}?">
+</app-confirm-modal>
 
 <div class="modal-container" *ngIf="showAddProductModal">
   <div class="modal-content">

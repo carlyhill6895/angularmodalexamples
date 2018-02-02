@@ -22,17 +22,19 @@ export class ShopComponent implements OnInit {
     this.cart = [];
   }
 
-  requestAdd(product: Product) {
+  requestAddProduct(product: Product) {
     this.selectedProduct = product;
     this.addProductModal.confirmReason = `add ${this.selectedProduct.name} to your cart?`;
     this.addProductModal.show();
   }
 
   addProductToCart() {
+    // update stock
     const order = new Order(this.selectedProduct.name, 1, this.selectedProduct.price);
     this.selectedProduct.stock --;
     const previousOrder = this.cart.find(cartOrder => order.productName === cartOrder.productName);
 
+    // update cart
     if (previousOrder) {
       previousOrder.amount ++;
       previousOrder.totalPrice += order.totalPrice;

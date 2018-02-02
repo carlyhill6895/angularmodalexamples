@@ -9,18 +9,18 @@ import {ModalComponent} from '../modal/modal.component';
 export class ConfirmModalComponent {
   @ViewChild(ModalComponent) modal: ModalComponent;
   @Input() confirmReason: string;
-  @Output() confirm = new EventEmitter<void>();
+  @Output() onConfirm = new EventEmitter<void>();
 
   show() {
     this.modal.showModal();
   }
 
-  close() {
+  closeModal() {
     this.modal.closeModal();
   }
 
-  confirmAction() {
-    this.confirm.emit();
+  confirm() {
+    this.onConfirm.emit();
     this.modal.closeModal();
   }
 }
