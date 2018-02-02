@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../domain/product';
+import {ConfirmModalComponent} from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-products-page',
@@ -11,10 +12,11 @@ export class ProductsPageComponent implements OnInit {
   selectedProduct: Product;
   newProduct: Product;
   productBeforeChange: Product;
-  showDeleteModal: boolean;
   showAddProductModal: boolean;
   showChangeModal: boolean;
   products: Product[];
+
+  @ViewChild(ConfirmModalComponent) deleteProductModal: ConfirmModalComponent;
   constructor() { }
 
   ngOnInit() {
@@ -24,7 +26,7 @@ export class ProductsPageComponent implements OnInit {
 
   requestDelete(product: Product) {
     this.selectedProduct = product;
-    this.showDeleteModal = true;
+    this.deleteProductModal.show();
   }
 
   requestChange(product: Product) {
@@ -35,7 +37,6 @@ export class ProductsPageComponent implements OnInit {
 
   deleteProduct() {
     this.products = this.products.filter((product) => product !== this.selectedProduct);
-    this.showDeleteModal = false;
   }
 
   addProduct() {
