@@ -11,7 +11,7 @@ export class ConfirmModalComponent {
   @Input() confirmReason: string;
   @Output() onConfirm = new EventEmitter<void>();
 
-  show() {
+  showModal() {
     this.modal.showModal();
   }
 

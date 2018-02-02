@@ -26,7 +26,7 @@ export class ProductsPageComponent implements OnInit {
 
   requestDelete(product: Product) {
     this.selectedProduct = product;
-    this.deleteProductModal.show();
+    this.deleteProductModal.showModal();
   }
 
   requestChange(product: Product) {

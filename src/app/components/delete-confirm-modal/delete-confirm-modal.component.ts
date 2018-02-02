@@ -11,7 +11,7 @@ export class DeleteConfirmModalComponent {
   @ViewChild(ConfirmModalComponent) confirmModal: ConfirmModalComponent;
 
   show() {
-    this.confirmModal.show();
+    this.confirmModal.showModal();
   }
 
   delete() {

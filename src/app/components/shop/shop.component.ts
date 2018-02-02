@@ -25,7 +25,7 @@ export class ShopComponent implements OnInit {
   requestAddProduct(product: Product) {
     this.selectedProduct = product;
     this.addProductModal.confirmReason = `add ${this.selectedProduct.name} to your cart?`;
-    this.addProductModal.show();
+    this.addProductModal.showModal();
   }
 
   addProductToCart() {
