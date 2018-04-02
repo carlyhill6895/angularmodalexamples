@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../domain/product';
 import {Order} from '../../domain/order';
-import {ConfirmModalComponent} from '../confirm-modal/confirm-modal.component';
+import {ConfirmModalComponent} from '../../components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-shop',

@@ -8,13 +8,15 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
 import { ModalComponent } from './components/modal/modal.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { DeleteConfirmModalComponent } from './components/delete-confirm-modal/delete-confirm-modal.component';
-import { ProductsPageComponent } from './components/products-page/products-page.component';
+import { ProductsPageComponent } from './shop/products-page/products-page.component';
 import {RouterModule} from '@angular/router';
 import { ModalExampleComponent } from './components/modal-example/modal-example.component';
-import { ShopComponent } from './components/shop/shop.component';
+import { ShopComponent } from './shop/shop/shop.component';
 import { ProfileComponent } from './shop/profile/profile.component';
 import { PreviewDirective } from './preview.directive';
 import { SortPipe } from './sort.pipe';
+import {ShopModule} from './shop/shop.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,33 +25,36 @@ import { SortPipe } from './sort.pipe';
     ModalComponent,
     ConfirmModalComponent,
     DeleteConfirmModalComponent,
-    ProductsPageComponent,
     ModalExampleComponent,
-    ShopComponent,
-    ProfileComponent,
     PreviewDirective,
-    SortPipe
+    SortPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ShopModule,
     HttpModule,
     RouterModule.forRoot([
-      {
-        path: 'products',
-        component: ProductsPageComponent
-      },
       {
         path: 'modals',
         component: ModalExampleComponent
       },
       {
+        path: 'shop',
+        loadChildren: './shop/shop.module#ShopModule'
+      },
+      {
         path: '',
-        component: ShopComponent
+        pathMatch: 'full',
+        redirectTo: 'shop'
       }
     ])
   ],
   providers: [],
+  exports: [
+    ConfirmModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
