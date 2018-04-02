@@ -12,8 +12,9 @@ import { ProductsPageComponent } from './components/products-page/products-page.
 import {RouterModule} from '@angular/router';
 import { ModalExampleComponent } from './components/modal-example/modal-example.component';
 import { ShopComponent } from './components/shop/shop.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './shop/profile/profile.component';
 import { PreviewDirective } from './preview.directive';
+import { SortPipe } from './sort.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PreviewDirective } from './preview.directive';
     ModalExampleComponent,
     ShopComponent,
     ProfileComponent,
-    PreviewDirective
+    PreviewDirective,
+    SortPipe
   ],
   imports: [
     BrowserModule,
