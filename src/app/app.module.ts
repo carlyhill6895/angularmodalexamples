@@ -12,6 +12,7 @@ import { ProductsPageComponent } from './components/products-page/products-page.
 import {RouterModule} from '@angular/router';
 import { ModalExampleComponent } from './components/modal-example/modal-example.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShopComponent } from './components/shop/shop.component';
     DeleteConfirmModalComponent,
     ProductsPageComponent,
     ModalExampleComponent,
-    ShopComponent
+    ShopComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
