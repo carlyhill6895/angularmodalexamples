@@ -13,6 +13,7 @@ import {RouterModule} from '@angular/router';
 import { ModalExampleComponent } from './components/modal-example/modal-example.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PreviewDirective } from './preview.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileComponent } from './profile/profile.component';
     ProductsPageComponent,
     ModalExampleComponent,
     ShopComponent,
-    ProfileComponent
+    ProfileComponent,
+    PreviewDirective
   ],
   imports: [
     BrowserModule,
