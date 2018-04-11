@@ -1,6 +1,6 @@
 <h1>Shop</h1>
 
-<table>
+<table class="shop">
   <tr>
     <td>Name</td>
     <td>Price</td>
@@ -16,7 +16,7 @@
 </table>
 
 <h2>Shopping cart:</h2>
-<table>
+<table class="shopping-cart">
   <tr>
     <td>Name</td>
     <td>Amount</td>
@@ -29,8 +29,14 @@
   </tr>
 </table>
 
-<button (click)="shoppingCart = []">Delete all items</button>
+<button (click)="showModal = true">Delete all items</button>
 
-<h2>Totale prijs: {{getTotalPrice() | currency:'EUR'}}</h2>
+<h2>Total price: {{getTotalPrice() | currency:'EUR'}}</h2>
 
-<!--<app-confirm-modal #addProductModal (confirm)="addProductToCart()" confirmReason=""></app-confirm-modal>-->
+<div class="modal-container" *ngIf="showModal">
+  <div class="modal-content">
+    <p>Are you sure you want to delete all items from your shopping cart?</p>
+    <button (click)="shoppingCart = []; showModal = false">Yes</button>
+    <button (click)="showModal = false">Cancel</button>
+  </div>
+</div>

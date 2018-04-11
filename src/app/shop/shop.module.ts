@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {ShopComponent} from './shop/shop.component';
 import {ProductsPageComponent} from './products-page/products-page.component';
 import {AuthGuard} from '../auth.guard';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {AuthGuard} from '../auth.guard';
   declarations: [
     ProfileComponent,
     ShopComponent,
-    ProductsPageComponent
+    ProductsPageComponent,
+    ModalComponent
   ],
   providers: [
     AuthGuard

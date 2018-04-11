@@ -13,7 +13,7 @@ export class ShopComponent implements OnInit {
   products: Product[];
   shoppingCart: Order[];
   selectedProduct: Product;
-  @ViewChild(ConfirmModalComponent) addProductModal: ConfirmModalComponent;
+  showModal: boolean;
 
   constructor() { }
 
@@ -22,15 +22,11 @@ export class ShopComponent implements OnInit {
     this.shoppingCart = [];
   }
 
-  requestAddProduct(product: Product, amount: number): void {
+  requestAddProduct(product: Product, amount: 1): void {
     this.selectedProduct = product;
-    this.addProductModal.confirmReason = `add ${this.selectedProduct.name} to your cart?`;
-    this.addProductModal.showModal();
-  }
 
-  addProductToCart() {
     // update stock
-    const order = new Order(this.selectedProduct.name, 1, this.selectedProduct.price);
+    const order = new Order(this.selectedProduct.name, amount, this.selectedProduct.price);
     this.selectedProduct.stock --;
     const previousOrder = this.shoppingCart.find(cartOrder => order.productName === cartOrder.productName);
 
