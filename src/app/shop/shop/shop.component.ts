@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../domain/product';
 import {Order} from '../../domain/order';
-import {ModalComponent} from '../modal/modal.component';
+import {ConfirmationModalComponent} from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-shop',
@@ -13,7 +13,7 @@ export class ShopComponent implements OnInit {
   products: Product[];
   shoppingCart: Order[];
   selectedProduct: Product;
-  @ViewChild('deleteModal') deleteModal: ModalComponent;
+  @ViewChild('deleteModal') deleteModal: ConfirmationModalComponent;
 
   constructor() { }
 

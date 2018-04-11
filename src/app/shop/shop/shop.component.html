@@ -33,8 +33,8 @@
 
 <h2>Total price: {{getTotalPrice() | currency:'EUR'}}</h2>
 
-<app-modal #deleteModal
+<app-confirmation-modal #deleteModal
           title="delete all items from your cart"
           (onConfirm)="shoppingCart = []">
-</app-modal>
+</app-confirmation-modal>
 
