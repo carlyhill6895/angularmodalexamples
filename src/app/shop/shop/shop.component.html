@@ -29,14 +29,12 @@
   </tr>
 </table>
 
-<button (click)="showModal = true">Delete all items</button>
+<button (click)="requestDeleteAll()">Delete all items</button>
 
 <h2>Total price: {{getTotalPrice() | currency:'EUR'}}</h2>
 
-<div class="modal-container" *ngIf="showModal">
-  <div class="modal-content">
-    <p>Are you sure you want to delete all items from your shopping cart?</p>
-    <button (click)="shoppingCart = []; showModal = false">Yes</button>
-    <button (click)="showModal = false">Cancel</button>
-  </div>
-</div>
+<app-modal #deleteModal
+          title="delete all items from your cart"
+          (onConfirm)="shoppingCart = []">
+</app-modal>
+

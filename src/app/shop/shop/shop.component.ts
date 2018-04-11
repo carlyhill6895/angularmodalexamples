@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../domain/product';
 import {Order} from '../../domain/order';
-import {ConfirmModalComponent} from '../../components/confirm-modal/confirm-modal.component';
+import {ModalComponent} from '../modal/modal.component';
 
 @Component({
   selector: 'app-shop',
@@ -13,7 +13,7 @@ export class ShopComponent implements OnInit {
   products: Product[];
   shoppingCart: Order[];
   selectedProduct: Product;
-  showModal: boolean;
+  @ViewChild('deleteModal') deleteModal: ModalComponent;
 
   constructor() { }
 
@@ -22,7 +22,13 @@ export class ShopComponent implements OnInit {
     this.shoppingCart = [];
   }
 
-  requestAddProduct(product: Product, amount: 1): void {
+  requestDeleteAll() {
+    if (this.shoppingCart.length > 0) {
+      this.deleteModal.showModal();
+    }
+  }
+
+  requestAddProduct(product: Product, amount: number): void {
     this.selectedProduct = product;
 
     // update stock
