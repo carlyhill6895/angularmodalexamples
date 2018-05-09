@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../domain/product';
-import {ConfirmModalComponent} from '../../components/confirm-modal/confirm-modal.component';
+import {ConfirmModalComponent} from '../../../components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-products-page',

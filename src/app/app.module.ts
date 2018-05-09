@@ -8,11 +8,11 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
 import { ModalComponent } from './components/modal/modal.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { DeleteConfirmModalComponent } from './components/delete-confirm-modal/delete-confirm-modal.component';
-import { ProductsPageComponent } from './shop/products-page/products-page.component';
+import { ProductsPageComponent } from './shop/components/products-page/products-page.component';
 import {RouterModule} from '@angular/router';
 import { ModalExampleComponent } from './components/modal-example/modal-example.component';
-import { ShopComponent } from './shop/shop/shop.component';
-import { ProfileComponent } from './shop/profile/profile.component';
+import { ShopComponent } from './shop/components/shop/shop.component';
+import { ProfileComponent } from './shop/components/profile/profile.component';
 import { PreviewDirective } from './preview.directive';
 import { SortPipe } from './sort.pipe';
 import {ShopModule} from './shop/shop.module';
