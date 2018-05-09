@@ -11,7 +11,9 @@
     <td>{{product.name}}</td>
     <td>{{product.price | currency:'EUR'}}</td>
     <td>{{product.stock}}</td>
-    <td><button (click)="requestAddProduct(product, 1)">Add to cart</button></td>
+    <td>
+      <button (click)="requestAddProduct(product, 1)">Add to cart</button>
+    </td>
   </tr>
 </table>
 
@@ -34,7 +36,7 @@
 <h2>Total price: {{getTotalPrice() | currency:'EUR'}}</h2>
 
 <app-confirmation-modal #deleteModal
-          title="delete all items from your cart"
-          (onConfirm)="shoppingCart = []">
+                        title="delete all items from your cart"
+                        (onConfirm)="shoppingCart = []">
 </app-confirmation-modal>
 
