@@ -1,6 +1,18 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../domain/product';
 import {ConfirmModalComponent} from '../../../components/confirm-modal/confirm-modal.component';
+import {ProductService} from '../../services/product.service';
+import {ActivatedRoute, ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+
+export class ProductsResolver implements Resolve<Product[]> {
+
+  constructor(private productService: ProductService) {}
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product[]> {
+    return this.productService.getProducts();
+  }
+}
 
 @Component({
   selector: 'app-products-page',
@@ -12,16 +24,20 @@ export class ProductsPageComponent implements OnInit {
   selectedProduct: Product;
   newProduct: Product;
   productBeforeChange: Product;
-  showAddProductModal: boolean;
-  showChangeModal: boolean;
+  showAddProductModal = false;
+  showChangeModal = false;
   products: Product[];
-
   @ViewChild(ConfirmModalComponent) deleteProductModal: ConfirmModalComponent;
-  constructor() { }
+
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.products = [{name: 'eggs', price: 1.25, stock: 5}, {name: 'milk', price: 0.9, stock: 10}];
+    this.route.data.subscribe(data => {
+      this.products = data.products
+    });
     this.newProduct = new Product(undefined, undefined, undefined);
+    this.selectedProduct = new Product(undefined, undefined, undefined);
   }
 
   requestDelete(product: Product) {
@@ -47,7 +63,6 @@ export class ProductsPageComponent implements OnInit {
 
   cancelChange() {
     const index = this.products.indexOf(this.selectedProduct);
-    console.log('put back to previous state: ', this.productBeforeChange);
     this.products[index] = this.productBeforeChange;
     this.showChangeModal = false;
   }
