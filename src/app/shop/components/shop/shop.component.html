@@ -8,12 +8,7 @@
     <td>Add to cart</td>
   </tr>
   <tr *ngFor="let product of products">
-    <td>{{product.name}}</td>
-    <td>{{product.price | currency:'EUR'}}</td>
-    <td>{{product.stock}}</td>
-    <td>
-      <button (click)="requestAddProduct(product, 1)">Add to cart</button>
-    </td>
+    <app-shop-product [product]="product" (productAdded)="updateCart($event)"></app-shop-product>
   </tr>
 </table>
 

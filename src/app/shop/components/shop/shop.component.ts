@@ -12,7 +12,6 @@ export class ShopComponent implements OnInit {
 
   products: Product[];
   shoppingCart: Order[];
-  selectedProduct: Product;
   @ViewChild('deleteModal') deleteModal: ConfirmationModalComponent;
 
   constructor() { }
@@ -28,15 +27,10 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  requestAddProduct(product: Product, amount: number): void {
-    this.selectedProduct = product;
-
-    // update stock
-    const order = new Order(this.selectedProduct.name, amount, this.selectedProduct.price);
-    this.selectedProduct.stock --;
+  updateCart(product: Product) {
+    const order = new Order(product.name, 1, product.price);
     const previousOrder = this.shoppingCart.find(cartOrder => order.productName === cartOrder.productName);
 
-    // update shoppingCart
     if (previousOrder) {
       previousOrder.amount ++;
       previousOrder.totalPrice += order.totalPrice;

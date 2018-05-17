@@ -8,6 +8,7 @@ import {AuthGuard} from '../auth.guard';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import {FormsModule} from '@angular/forms';
 import {ProductService} from './services/product.service';
+import { ShopProductComponent } from './components/shop-product/shop-product.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import {ProductService} from './services/product.service';
     ProfileComponent,
     ShopComponent,
     ProductsPageComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    ShopProductComponent
   ],
   providers: [
     AuthGuard,
