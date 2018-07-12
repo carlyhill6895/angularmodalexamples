@@ -29,7 +29,8 @@ export class ShopComponent implements OnInit {
 
   updateCart(product: Product) {
     const order = new Order(product.name, 1, product.price);
-    const previousOrder = this.shoppingCart.find(cartOrder => order.productName === cartOrder.productName);
+    const previousOrder =
+      this.shoppingCart.find(cartOrder => order.productName === cartOrder.productName);
 
     if (previousOrder) {
       previousOrder.amount ++;

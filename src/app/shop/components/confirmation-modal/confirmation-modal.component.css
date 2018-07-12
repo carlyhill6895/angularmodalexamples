@@ -17,3 +17,16 @@
   background-color: white;
 }
 
+:host(.warning) .btn-confirm {
+  background-color: darkred;
+  color: white;
+}
+
+.btn-warn {
+  background-color: darkred;
+  color: white;
+}
+
+.btn-good {
+  background-color: limegreen;
+}

@@ -1,4 +1,23 @@
-<p>
-  profile works!
-</p>
+<h1>Welcome to your profile, {{user.name}}!</h1>
+<p>Your profile will show your personal details, but also your previous orders.</p>
+<button (click)="showForm = true">change personal details</button>
+
+<form #detailsForm="ngForm" *ngIf="showForm">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" [(ngModel)]="user.name">
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" [(ngModel)]="user.email">
+  </div>
+
+  <button type="submit" (click)="changeDetails(detailsForm.value)">Change details </button>
+</form>
+
+<h4>Previous orders</h4>
+<ul class="order-list" *ngFor="let previousOrder of user.previousOrders">
+  <li>{{previousOrder.productName}}, {{previousOrder.totalPrice | currency:'EUR'}}</li>
+</ul>
 

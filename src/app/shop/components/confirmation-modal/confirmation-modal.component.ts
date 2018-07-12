@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class ConfirmationModalComponent {
   show: boolean;
   @Input() title: string;
+  @Input() list: string [];
   @Output() onConfirm = new EventEmitter<void>();
 
   showModal(): void {
